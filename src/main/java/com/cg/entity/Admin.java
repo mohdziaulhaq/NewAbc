@@ -31,7 +31,7 @@ public class Admin {
 	private String password;
 	
 	@NotNull(message = "contact number cannot be null")
-	@Min(10)
+	@Min(1000000000)
 	private long contactNumber;
 	
 	@NotNull(message = "email id cannot be null")
