@@ -35,7 +35,9 @@ public class AdminController {
 	public EngineerServiceInterface is;
 	
 	
-	@GetMapping("viewAdmin/{id}")
+	
+	
+	@GetMapping("/viewAdmin/{id}")
 	public Admin viewAdmin(@PathVariable("id") int id) {
 		Admin a = new Admin();
 		a.setAdminId(id);

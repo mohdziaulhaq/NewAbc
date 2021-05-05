@@ -1,6 +1,7 @@
 package com.cg.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import com.cg.service.ClientServiceInterface;
 import com.cg.service.EngineerServiceInterface;
 
 @RestController
-@RequestMapping("auth")
+//@RequestMapping("auth")
 public class LoginController {
 	@Autowired
 	public AdminServiceInterface as;
@@ -24,15 +25,9 @@ public class LoginController {
 	@Autowired
 	ClientServiceInterface cs;
 	
-	@PostMapping("adminSignIn")
-	public Admin adminSignIn(@RequestBody Admin a) throws InvalidCredentialsException{
-		Admin aa = as.adminSignIn(a);
-		return aa;
+	@GetMapping("api")
+	public String fronttoback() {
+		return "Spring Boot App";
 	}
 	
-	@PostMapping("adminSignOut")
-	public Admin adminSignOut(@RequestBody Admin e) throws InvalidCredentialsException{
-		Admin aa = as.adminSignOut(e);
-		return aa;
-	}
 }
