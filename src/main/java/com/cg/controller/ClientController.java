@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ import com.cg.exception.InvalidClientIdException;
 import com.cg.exception.InvalidCredentialsException;
 import com.cg.exception.InvalidEngineerIdException;
 import com.cg.service.ClientServiceInterface;
-
+@CrossOrigin(origins = "http://localhost:3001")
 @RestController
 @RequestMapping("Client")
 public class ClientController {
@@ -54,6 +55,7 @@ public class ClientController {
 	public String changeStatusOfComplaint(@PathVariable("complaintId") int complaintId) {
 		return cs.changeStatusOfComplaintService(complaintId);
 	}
+	
 	@PostMapping("clientSignIn")
 	public Client clientSignIn(@RequestBody Client c) throws InvalidCredentialsException{
 		Client cc = cs.clientSignIn(c);

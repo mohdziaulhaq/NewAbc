@@ -18,7 +18,7 @@ public class Engineer {
 	
 	
 	@NotNull(message = "password cannot be null")
-	@Size(min=4,max=10, message = "Password must be greater than or equal to 5 characters and less than 10 characters")
+	@Size(min=2,max=10, message = "Password must be greater than or equal to 5 characters and less than 10 characters")
 	@JsonIgnore
 	private String password;
 	

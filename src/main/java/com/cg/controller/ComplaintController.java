@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +26,7 @@ import com.cg.exception.InvalidEngineerIdException;
 import com.cg.exception.InvalidModelNumberException;
 import com.cg.exception.OutOfWarrantyException;
 import com.cg.service.ComplaintServiceInteface;
-
+@CrossOrigin(origins = "http://localhost:3001")
 @RestController
 @RequestMapping("Complaint")
 public class ComplaintController {
