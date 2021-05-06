@@ -21,7 +21,7 @@ import com.cg.exception.InvalidClientIdException;
 import com.cg.exception.InvalidCredentialsException;
 import com.cg.exception.InvalidEngineerIdException;
 import com.cg.service.ClientServiceInterface;
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("Client")
 public class ClientController {

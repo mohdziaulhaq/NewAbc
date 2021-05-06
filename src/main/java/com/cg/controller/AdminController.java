@@ -25,7 +25,7 @@ import com.cg.exception.InvalidDomainException;
 import com.cg.exception.InvalidEngineerIdException;
 import com.cg.service.EngineerServiceInterface;
 import com.cg.service.AdminServiceInterface;
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("Admin")
 public class AdminController {

@@ -17,7 +17,7 @@ import com.cg.service.EngineerServiceInterface;
 import com.cg.service.LoginService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = "http://localhost:3000")
 //@RequestMapping("auth")
 public class LoginController {
 	
