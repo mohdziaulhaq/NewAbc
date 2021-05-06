@@ -1,26 +1,29 @@
 import React, { Component } from 'react'
-
+import 'bootstrap/dist/css/bootstrap.css';
 const divStyle = {
     width: '100%',
     height: '100vh',
     backgroundImage: "url(/sad-customer.png)",
+    backgroundColor: "#99ccff",
     backgroundSize: 'cover',
     float: 'right'
   };
 
 const s={
-    width: '30rem',
-    fontstyle: 'Fantasy'
+    width: '40rem',
+    backgroundColor: "#99ccff",
+    fontSize: 60,
+    fontFamily: 'Georgia'
 }
 
 class HomePageClient extends Component {
     constructor(props) {
-        super(props);
+        super(props)
     
         this.state = {
-             id: this.props.match.params.id1,
-             client : '',
-        };
+            id: this.props.match.params.id,
+            client : '',
+       };
         
         this.bookComplaintHandler=this.bookComplaintHandler.bind(this)
     }
@@ -31,22 +34,33 @@ class HomePageClient extends Component {
 
     render() {
         return (
+            
             <div style={divStyle}>
-                
-            <div className="alert alert-success alert-dismissible fade show text-center" role="alert">
-      <strong>Welcome</strong> to ABC Electronics Complaint Portal.
-      <button
-        type="button"
-        className="close"
-        data-dismiss="alert"
-        aria-label="Close"
-      >
+              <div className="alert alert-secondary alert-dismissible fade show" role="alert">
+      In accordance with the latest Government guidelines on <strong>COVID-19</strong>, our services will be restricted in some locations
+      <button type="button" className="close"data-dismiss="alert" aria-label="close"   >
         <span aria-hidden="true">&times;</span>
       </button>
-    </div>
-            <div className="card align-self-center border-0 float-left" style={s} >
-                <h1 className="card-title py-5"><b>Not Happy With The Product or Service Received?</b></h1>
-                <p className="py-5"></p>
+      </div>
+      <div className="text-right">
+          <button className="btn btn-link" onClick={this.logout}>
+            Logout
+          </button>
+        </div>
+        <div class="alert alert-dark" role="alert">
+  A simple dark alert—check it out!
+</div>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+    <p></p>
+            <div className="card align-self-center border-0 float-left pt-5 pl-5" style={s} >
+                <p className="card-title"><b>Not Happy With The Product or Service Received?</b></p>
+                <p className="py-2"></p>
                 <button type="button" className="btn btn-primary" onClick={this.bookComplaintHandler}>Book Complaint</button>
                 </div>
             </div>
@@ -54,4 +68,4 @@ class HomePageClient extends Component {
     }
 }
 
-export default HomePageClient;
+export default HomePageClient

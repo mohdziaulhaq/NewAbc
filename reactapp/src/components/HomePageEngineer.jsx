@@ -7,6 +7,13 @@ class HomePageEngineer extends Component {
             engineer:''
          }
     }
+
+    logout = (e) => {
+        this.props.history.push('/login');
+      };
+
+
+
     render() { 
         return ( 
             <div>
@@ -19,15 +26,15 @@ class HomePageEngineer extends Component {
         <div className="text-center">
           <div style={{ border: 'none' }} className="card col-md-8 offset-md-2 table-borderless">
             <button className="btn btn-outline-primary mr-5" onClick={this.viewRepresentativeProfile}>
-              View my Profile
+              Get All Open Complaints
             </button>
             <br></br>
             <button className="btn btn-outline-primary mr-5" onClick={this.update}>
-              Update my Profile
+              Get Resolved Complaints
             </button>
             <br></br>
             <button className="btn btn-outline-primary mr-5" onClick={this.getTaxforms}>
-              Verify Customer Taxforms
+              Change Status of Complaint
             </button>
             <br></br>
             <button className="btn btn-outline-primary mr-5" onClick={this.viewNotice}>

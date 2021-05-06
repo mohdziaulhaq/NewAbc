@@ -3,7 +3,7 @@ class HomePageAdmin extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            id: this.props.match.params.id1,
+            id: this.props.match.params.id,
             admin: '',
          }
     }
@@ -16,7 +16,7 @@ class HomePageAdmin extends Component {
     render() { 
         return ( 
             <div>
-        <h2 className="text-center">Welcome Admin {this.state.admin.id}, what do you want to do next?</h2>
+        <h2 className="text-center">Welcome Admin {this.state.id}, what do you want to do next?</h2>
         <div className="text-right">
           <button className="btn btn-outline-danger" onClick={this.logout}>
             Logout

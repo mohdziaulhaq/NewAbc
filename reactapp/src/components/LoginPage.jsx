@@ -33,18 +33,18 @@ class LoginPage extends Component {
         }
     }
 
-    loginUser=(e)=> {
+    loginUser = (e) => {
         e.preventDefault();
         if (this.state.choice === 'client') {
           LoginService.loginUser(this.state.id, this.state.password, 1).then((res) => {
             this.setState({ loginres: res.data });
             if (this.state.loginres === 'Login successfull') {
-             this.props.history.push("/homepage-client");
-            //this.props.history.push(`/homepage-client/${this.state.id}`);
+             //this.props.history.push("/homepage-client");
+            this.props.history.push(`/homepage-client/${this.state.id}`);
             } else {
                 
-              // alert(this.state.loginres);
-               //window.location.reload(false);
+              alert(this.state.loginres);
+               window.location.reload(false);
             }
           });//.catch(console.log(this.state.loginres));
         }
@@ -64,11 +64,13 @@ class LoginPage extends Component {
           LoginService.loginUser(this.state.id, this.state.password, 3).then((res) => {
             this.setState({ loginres: res.data });
             if (this.state.loginres === 'Login successfull') {
+              console.log(this.state.loginres);
               this.props.history.push(`/homepage-admin/${this.state.id}`);
             } else {
               alert(this.state.loginres);
               window.location.reload(false);
             }
+            console.log(this.state.loginres);
           });
         }
       }
@@ -102,7 +104,7 @@ class LoginPage extends Component {
               <h2 className="text-center font-weight-bold">Login</h2>
               <hr></hr>
               <div className="card-body">
-                <form name="form" onSubmit={this.loginUser}>
+                <form name="form" >
                   <div className="form-group">
                     <label className="font-weight-bold">Login/Register as a&nbsp;&nbsp;&nbsp;</label>
                     <select id="users" name="users" value={this.state.choice} onChange={this.changeChoiceHandler}>
@@ -122,7 +124,7 @@ class LoginPage extends Component {
                   </div>
 
                   <div className="">
-                    <button className="btn btn-outline-primary btn btn-lg btn-block" type="submit">
+                    <button className="btn btn-outline-primary btn btn-lg btn-block" type="submit" onClick={this.loginUser}>
                       Login
                     </button>
                   </div>
