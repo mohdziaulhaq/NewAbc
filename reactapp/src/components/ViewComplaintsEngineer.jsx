@@ -97,6 +97,6 @@ class ViewComplaintsEngineer extends Component {
     </>
          );
     }
-}0
+}
  
 export default ViewComplaintsEngineer;
