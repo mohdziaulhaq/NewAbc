@@ -1,5 +1,6 @@
 package com.cg.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Client {
 	@Id
 	@NotNull(message = "client Id cannot be null")
+	@Column(updatable = false)
 	private String clientId;
 	
 	@NotNull(message = "password cannot be null")

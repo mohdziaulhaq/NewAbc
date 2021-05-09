@@ -30,7 +30,7 @@ public class ClientController {
 	ClientServiceInterface cs;
 	
 	@PutMapping("saveClient")
-	public String saveClient(@Valid @RequestBody Client c) {
+	public String saveClient(@RequestBody Client c) {
 		String str=cs.saveClientService(c);
 		System.out.println(str);
 		return str;

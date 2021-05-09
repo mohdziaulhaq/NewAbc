@@ -26,7 +26,7 @@ import com.cg.exception.InvalidEngineerIdException;
 import com.cg.exception.InvalidModelNumberException;
 import com.cg.exception.OutOfWarrantyException;
 import com.cg.service.ComplaintServiceInteface;
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("Complaint")
 public class ComplaintController {
@@ -41,14 +41,14 @@ public class ComplaintController {
 	  return cc;
 	  }
 	  
-	  @PutMapping("bookComplaint")
+	  @PostMapping("bookComplaint")
 	  public boolean bookComplaint(@Valid @RequestBody Complaint cp)throws InvalidEngineerIdException, OutOfWarrantyException, InvalidModelNumberException, InvalidClientIdException {
 		  
 		  boolean b=cs.bookComplaintService(cp);
 		  return b;
 	  }
 	  @PostMapping("getClientAllComplaints")
-	  public List<Complaints> getClientAllComplaints(@Valid @RequestBody Client e)throws InvalidClientIdException{
+	  public List<Complaints> getClientAllComplaints( @RequestBody Client e)throws InvalidClientIdException{
 		  List<Complaint> c=cs.getClientAllComplaintsService(e);
 		  List<Complaints>cp1=new ArrayList<Complaints>();
 		  for(Complaint b: c) {

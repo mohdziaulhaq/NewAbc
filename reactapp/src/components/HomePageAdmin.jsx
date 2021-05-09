@@ -11,7 +11,11 @@ class HomePageAdmin extends Component {
     logout = (e) => {
         this.props.history.push('/login');
       };
+    getComplaintsByProductsHandler=()=>{
+        this.props.history.push("/getcomplaintsbyproduct");
+    }
 
+    
 
     render() { 
         return ( 
@@ -39,7 +43,7 @@ class HomePageAdmin extends Component {
             <button className="btn btn-outline-primary mr-5" onClick={this.viewNotice}>
               Get All Complaints
             </button>
-            <button className="btn btn-outline-primary mr-5" onClick={this.viewNotice}>
+            <button className="btn btn-outline-primary mr-5" onClick={this.getComplaintsByProductsHandler}>
               Get Complaints By Products
             </button>
 

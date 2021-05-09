@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.css';
 const divStyle = {
     width: '100%',
     height: '100vh',
@@ -31,7 +30,9 @@ class HomePageClient extends Component {
     bookComplaintHandler=()=>{
         this.props.history.push("/bookComplaint")
     }
-
+    logout = (e) => {
+      this.props.history.push('/login');
+    };
     render() {
         return (
             
@@ -43,20 +44,12 @@ class HomePageClient extends Component {
       </button>
       </div>
       <div className="text-right">
-          <button className="btn btn-link" onClick={this.logout}>
+          <button className="btn btn-outline-link" onClick={this.logout}>
             Logout
           </button>
         </div>
-        <div class="alert alert-dark" role="alert">
-  A simple dark alert—check it out!
-</div>
 
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+
     <p></p>
             <div className="card align-self-center border-0 float-left pt-5 pl-5" style={s} >
                 <p className="card-title"><b>Not Happy With The Product or Service Received?</b></p>

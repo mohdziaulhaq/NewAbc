@@ -23,7 +23,7 @@ import com.cg.entity.Complaints;
 import com.cg.entity.Engineer;
 import com.cg.exception.InvalidCredentialsException;
 import com.cg.service.EngineerServiceInterface;
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("Engineer")
 public class EngineerController {
@@ -31,7 +31,7 @@ public class EngineerController {
 	@Autowired
 	EngineerServiceInterface es;
 	
-	@PostMapping("getAllOpenComplaints")
+	@PostMapping("getAllOpenComplaints/{status}")
 	public List<Complaints> getAllOpenComplaints(@RequestBody Engineer e){
 		List<Complaint> c= es.getAllOpenComplaintsService(e);
 		List<Complaints>cp1=new ArrayList<Complaints>();

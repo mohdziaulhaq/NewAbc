@@ -22,7 +22,7 @@ import com.cg.entity.Engineer;
 import com.cg.entity.Product;
 import com.cg.exception.InvalidModelNumberException;
 import com.cg.service.ProductServiceInterface;
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("Product")
 public class ProductController {

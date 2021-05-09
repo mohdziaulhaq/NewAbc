@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
 import LoginService from '../services/LoginService';
 
@@ -11,11 +10,13 @@ class LoginPage extends Component {
             loginres:'',
             id:'',
             password:'',
-            choice:'client'
+            choice:'client',
+            rememberMe: false
          };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCheckBoxChange = this.handleCheckBoxChange.bind(this);
         this.loginUser = this.loginUser.bind(this);
     }
 
@@ -23,6 +24,13 @@ class LoginPage extends Component {
         const { name, value } = e.target;
         this.setState({ [name]: value });
     }
+
+    handleCheckBoxChange = (event) => {
+      const input = event.target;
+      const value = input.type === 'checkbox' ? input.checked : input.value;
+   
+      this.setState({ [input.name]: value });
+    };
 
     handleSubmit(e) {
         e.preventDefault();
@@ -33,20 +41,29 @@ class LoginPage extends Component {
         }
     }
 
+    componentDidMount() {
+      const rememberMe = localStorage.getItem('rememberMe') === 'true';
+      const id = rememberMe ? localStorage.getItem('id') : '';
+      this.setState({ id, rememberMe });
+    }
+
     loginUser = (e) => {
         e.preventDefault();
+        sessionStorage.setItem('id',this.state.id);
+            sessionStorage.setItem('role',this.state.choice);
+            //sessionStorage.setItem('password',this.state.password);
+            localStorage.setItem('rememberMe',this.state.rememberMe);
+            localStorage.setItem('id',this.state.rememberMe ? this.state.id : '');
         if (this.state.choice === 'client') {
           LoginService.loginUser(this.state.id, this.state.password, 1).then((res) => {
             this.setState({ loginres: res.data });
             if (this.state.loginres === 'Login successfull') {
-             //this.props.history.push("/homepage-client");
             this.props.history.push(`/homepage-client/${this.state.id}`);
             } else {
-                
               alert(this.state.loginres);
                window.location.reload(false);
             }
-          });//.catch(console.log(this.state.loginres));
+          });
         }
         if (this.state.choice === 'engineer') {
           LoginService.loginUser(this.state.id, this.state.password, 2).then((res) => {
@@ -64,7 +81,6 @@ class LoginPage extends Component {
           LoginService.loginUser(this.state.id, this.state.password, 3).then((res) => {
             this.setState({ loginres: res.data });
             if (this.state.loginres === 'Login successfull') {
-              console.log(this.state.loginres);
               this.props.history.push(`/homepage-admin/${this.state.id}`);
             } else {
               alert(this.state.loginres);
@@ -78,9 +94,8 @@ class LoginPage extends Component {
       register = (event) => {
         event.preventDefault();
         if (this.state.choice === 'client') {
-          this.props.history.push('/registerClient');
+          this.props.history.push('/register-client');
         }
-        
       };
     
       changeIdHandler = (event) => {
@@ -122,7 +137,7 @@ class LoginPage extends Component {
                     <label className="font-weight-bold">Password</label>
                     <input type="password" placeholder="Password" className="form-control" name="password" value={this.state.password} onChange={this.changePasswordHandler} required />
                   </div>
-
+                  <input name="rememberMe" checked={this.state.rememberMe} onChange={this.handleCheckBoxChange} type="checkbox"/> Remember me
                   <div className="">
                     <button className="btn btn-outline-primary btn btn-lg btn-block" type="submit" onClick={this.loginUser}>
                       Login
