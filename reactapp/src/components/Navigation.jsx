@@ -27,13 +27,13 @@ export class Navigation extends Component {
                 
                         <Nav className="mr-auto">
                            <Nav.Link href="/homepage-engineer">Home</Nav.Link>
+                           <Nav.Link href="https://www.covid19india.org/">COVID 19 Updates</Nav.Link>
                            <Nav.Link href="/engineer-profile">My Profile</Nav.Link>
-                           <Nav.Link href="/getcomplaintsbydate">Pricing</Nav.Link>
                            <Nav.Link href="/viewcomplaints">My Complaints</Nav.Link>
                         </Nav>
                         <Form inline>
                           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                          <Button variant="outline-success" href="https://www.google.com/search" className="mr-2">Search</Button>
+                          <Button variant="light" href="https://www.google.com/search" className="mr-2">Search</Button>
                         </Form>
                         <Navbar.Brand className="mx-sm-2" onClick={this.logout.bind(this)} href="/login">Logout</Navbar.Brand>
                 </Navbar>)

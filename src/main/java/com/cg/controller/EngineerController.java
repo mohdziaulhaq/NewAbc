@@ -54,11 +54,13 @@ public class EngineerController {
 	
 	@PostMapping("getResolvedComplaintsByDate/{date}")
 	public List<Complaints> getResolvedComplaintsByDate(@RequestBody Engineer e,@PathVariable ("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date){
+		System.out.println("inside controller");
 		List<Complaint>c=es.getResolvedComplaintsByDateService(e,date);
 		List<Complaints>cp1=new ArrayList<Complaints>();
 		  for(Complaint b: c) {
 			  cp1.add(new Complaints(b.getComplaintId(),b.getComplaintName(),b.getStatus(),b.getEngineer().getEmployeeId(),b.getClient().getClientId(),b.getProduct().getModelNumber()));
 		  }
+		  System.out.println("again inside controller");
 		  return cp1;
 	}
 	

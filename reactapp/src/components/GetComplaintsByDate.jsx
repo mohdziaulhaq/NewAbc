@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
 import EngineerService from "../services/EngineerService.js";
+import Navigation from "./Navigation.jsx";
 class GetComplaintsByDate extends Component {
   constructor(props) {
     super(props);
     this.state = {
       employee: { employeeId: sessionStorage.getItem("id") },
-      date: new Date(),
+      date: '',
       complaints: [],
     };
   }
@@ -26,13 +27,15 @@ class GetComplaintsByDate extends Component {
 
   dateHandler = (event) => {
     this.setState({
-      date: event
+      date: event.target.value
     });
     console.log('inside date handler'+this.state.date);
   }
 
   render() {
     return (
+      <>
+      <Navigation/>
       <div className="container">
         <h2 className="text-center">Get Complaints By Date</h2>
         <center>
@@ -40,14 +43,14 @@ class GetComplaintsByDate extends Component {
             <div className="col-3">
               <div className="form-group">
                 <label> Select the Date</label>
-                {/* <input
+                <input
                   type="text"
                   value={this.state.value}
                   onChange={this.dateHandler}
-                /> */}
-                <div>
+                />
+                {/* <div>
                     <DatePicker selected={this.state.date} onChange={this.dateHandler}></DatePicker>
-                </div>
+                </div> */}
               </div>
               <button className="btn btn-outline-primary" type="submit">
                 Submit
@@ -82,6 +85,7 @@ class GetComplaintsByDate extends Component {
           </table>
         </div>
       </div>
+      </>
     );
   }
 }

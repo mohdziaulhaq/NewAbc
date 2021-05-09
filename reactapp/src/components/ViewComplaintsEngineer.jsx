@@ -37,8 +37,18 @@ class ViewComplaintsEngineer extends Component {
         return ( 
         <>
             <Navigation/>
+
+            <Card className="text-left">
+          <Card.Body>
+            <Button variant="primary" href="/getcomplaintsbydate">View Complaints By Date</Button>
+          </Card.Body>
+          <Card.Footer className="text-muted"></Card.Footer>
+</Card> 
+
+
+
             <div className="card col-md-6 offset-md-3 offset-md-3">
-      <h2 className="text-center">My Tasks</h2>
+      <h2 className="text-center">Assigned Complaints</h2>
 
       <br></br>
 
