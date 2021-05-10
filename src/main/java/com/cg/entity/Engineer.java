@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 public class Engineer {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO )
 	private int employeeId;
 	
 	@NotNull(message = "password cannot be null")

@@ -5,6 +5,7 @@ import java.util.List;
 import com.cg.entity.Admin;
 import com.cg.entity.Complaint;
 import com.cg.entity.Engineer;
+import com.cg.entity.Product;
 import com.cg.exception.InvalidComplaintIdException;
 import com.cg.exception.InvalidCredentialsException;
 import com.cg.exception.InvalidDomainException;
@@ -25,4 +26,8 @@ public interface AdminServiceInterface {
 	public Complaint replaceEngineerFromComplaint(int complaintId)throws InvalidComplaintIdException; // replace engineer from the complaint and allocate new engineer
 	Admin adminSignIn(Admin a) throws InvalidCredentialsException;
 	Admin adminSignOut(Admin a) throws InvalidCredentialsException;
+	List<Complaint> getAllComplaintsService();
+	List<Complaint> getAllOpenComplaintsService();
+	List<Product> getAllProducts();
+	List<Engineer> getEngineerByDomainService(String domain);
 }

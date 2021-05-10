@@ -11,6 +11,7 @@ const divStyle = {
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
   backgroundAttachment: "fixed",
+  marginBottom: "230px"
 };
 
 class HomePageAdmin extends Component {
@@ -158,7 +159,7 @@ class HomePageAdmin extends Component {
                 <th>Engineerid</th>
                 <th>Clientid</th>
                 <th>Model number</th>
-                <th>Change Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>

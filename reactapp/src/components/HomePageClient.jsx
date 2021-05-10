@@ -20,7 +20,7 @@ class HomePageClient extends Component {
         super(props)
     
         this.state = {
-            id: this.props.match.params.id,
+            id: sessionStorage.getItem("id"),
             client : '',
        };
         

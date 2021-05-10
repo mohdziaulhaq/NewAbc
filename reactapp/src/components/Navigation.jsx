@@ -46,8 +46,8 @@ export class Navigation extends Component {
                            
                             <Nav className="mr-auto">
                                <Nav.Link href="/homepage-client">Home</Nav.Link>
+                               <Nav.Link href="https://www.covid19india.org/">COVID 19 Updates</Nav.Link>
                                <Nav.Link href="/client-profile">My Profile</Nav.Link>
-                               <Nav.Link href="#pricing">Pricing</Nav.Link>
                                <Nav.Link href="/change-status">My Complaints</Nav.Link>
                             </Nav>
                             <Form inline>
@@ -64,8 +64,8 @@ export class Navigation extends Component {
                             
                             <Nav className="mr-auto">
                                <Nav.Link href="/homepage-admin">Home</Nav.Link>
+                               <Nav.Link href="https://www.covid19india.org/">COVID 19 Updates</Nav.Link>
                                <Nav.Link href="/admin-profile">My Profile</Nav.Link>
-                               <Nav.Link href="#pricing">Pricing</Nav.Link>
                                <Nav.Link href="/change-status">View All Complaints</Nav.Link>
                             </Nav>
                             <Form inline>

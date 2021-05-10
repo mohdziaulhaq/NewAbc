@@ -54,9 +54,9 @@ public class ComplaintService implements ComplaintServiceInteface {
 		if(e.isEmpty()) {
 			throw new InvalidEngineerIdException("Currently Engineer Not Available For this category");
 		}
-		if(pp.getWarrantyDate().compareTo(LocalDate.now())<0) {
-			throw new OutOfWarrantyException("Product Warranty Expired");
-		}
+//		if(pp.getWarrantyDate().compareTo(LocalDate.now())<0) {
+//			throw new OutOfWarrantyException("Product Warranty Expired");
+//		}
 		  Engineer	e1=e.get(); 
 		  cp.setEngineer(e1);
 

@@ -17,6 +17,9 @@ import RegisterClient from './components/RegisterClient';
 import AddProduct from './components/AddProduct';
 import GetComplaintsByDate from './components/GetComplaintsByDate';
 import ViewComplaintsEngineer from './components/ViewComplaintsEngineer';
+import ViewClientProfile from './components/ViewClientProfile';
+import ViewEngineerProfile from './components/ViewEngineerProfile';
+import ViewAdminProfile from './components/ViewAdminProfile';
 
 function App() {
   return (
@@ -38,6 +41,9 @@ function App() {
         <Route path="/add-engineer" component={AddEngineer}></Route>
         <Route path="/getcomplaintsbyproduct" component={GetComplaintsByProduct}></Route>
         
+        <Route path="/client-profile" component={ViewClientProfile}></Route>
+        <Route path="/engineer-profile" component={ViewEngineerProfile}></Route>
+        <Route path="/admin-profile" component={ViewAdminProfile}></Route>
 
         <Route path="/getcomplaintsbydate" component={GetComplaintsByDate}></Route>
         <Route path="/add-product" component={AddProduct}></Route>
