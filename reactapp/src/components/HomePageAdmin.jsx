@@ -56,7 +56,7 @@ class HomePageAdmin extends Component {
     this.props.history.push("/login");
   };
 
-  render() {
+  render() {  
     return (
       <div style={divStyle}>
         <Navigation />
