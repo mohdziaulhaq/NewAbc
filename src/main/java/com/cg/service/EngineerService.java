@@ -38,7 +38,7 @@ public class EngineerService implements EngineerServiceInterface {
 	@Override
 	public List<Complaint> getResolvedComplaintsByDateService(Engineer e, LocalDate date) {
 		
-		return cr.findAll().stream().filter(f->f.getEngineer().getEmployeeId()==e.getEmployeeId()&& f.getStatus().equalsIgnoreCase("Closed") && f.getProduct().getDateOfPurchase().equals(date)).collect(Collectors.toList());
+		return cr.findAll().stream().filter(f->f.getEngineer().getEmployeeId()==e.getEmployeeId()&& f.getStatus().equalsIgnoreCase("Open") && f.getProduct().getDateOfPurchase().equals(date)).collect(Collectors.toList());
 	}
 
 	@Override
