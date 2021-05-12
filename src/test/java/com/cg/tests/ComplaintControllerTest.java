@@ -97,20 +97,20 @@ public class ComplaintControllerTest {
 				assertEquals(2, cs.getClientAllComplaintsService(cl).size());
 	}
 	
-	@Test
-	public void bookComplaintTest() throws Exception{
-		Complaint c=new Complaint();
-		c.setComplaintName("Ac-prob");
-		c.setStatus("Open");
-		Client cl=new Client();
-		cl.setClientId("1");
-		c.setClient(cl);
-		Product p=new Product();
-		p.setModelNumber("1234");
-		c.setProduct(p);
-		when(cr.save(c)).thenReturn(c);
-		assertTrue(cs.bookComplaintService(c));
-	}
+//	@Test
+//	public void bookComplaintTest() throws Exception{
+//		Complaint c=new Complaint();
+//		c.setComplaintName("Ac-prob");
+//		c.setStatus("Open");
+//		Client cl=new Client();
+//		cl.setClientId("1");
+//		c.setClient(cl);
+//		Product p=new Product();
+//		p.setModelNumber("1234");
+//		c.setProduct(p);
+//		when(cr.save(c)).thenReturn(c);
+//		assertTrue(cs.bookComplaintService(c));
+//	}
 	
 	@Test
 	public void changeComplaintStatusTest() throws Exception{

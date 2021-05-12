@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
 import NotFound from './components/NotFound';
 import LoginPage from "./components/LoginPage";
 import Footer from './components/Footer';
@@ -24,7 +23,6 @@ function App() {
   return (
     <BrowserRouter>
     <div>
-      <Header/>
       <Switch>
         <Route path="/" exact component={LoginPage}></Route>
         <Route path="/login" exact component={LoginPage}></Route>
@@ -44,6 +42,8 @@ function App() {
         <Route path="/engineer-profile" component={ViewEngineerProfile}></Route>
         <Route path="/admin-profile" component={ViewAdminProfile}></Route>
 
+
+        <Route path="/getcomplaintsbyproduct" component={GetComplaintsByProduct} ></Route>
         <Route path="/getcomplaintsbydate" component={GetComplaintsByDate}></Route>
         <Route path="/manage-products" component={AddProduct}></Route>
         <Route path="/changestatus-client" component={ChangeStatusClient}></Route>
