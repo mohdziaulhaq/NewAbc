@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import AdminService from "../services/AdminService";
 import Navigation from "./Navigation";
-import { Card, CardDeck } from "react-bootstrap";
+import { Card, CardDeck, Form } from "react-bootstrap";
 import ComplaintService from "../services/ComplaintService";
 
 const divStyle = {
-  width: "100%",
-  height: "100vh",
-  backgroundImage: "url(/bg5.jpg)",
-  backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
-  backgroundAttachment: "fixed",
-  marginBottom: "230px"
+  paddingBottom:'80px',
+  backgroundImage: "url(/bg-6.jpg)",
+  backgroundSize: "contain",
+  backgroundAttached: "fixed"
 };
+
+const cardStyle={ opacity: 0.8, fontWeight: "bold", fontSize: 18, backgroundColor:'white', color:'black'}
 
 class HomePageAdmin extends Component {
   constructor(props) {
@@ -20,16 +19,17 @@ class HomePageAdmin extends Component {
     this.state = {
       id: sessionStorage.getItem("id"),
       admin: "",
-      complaints: [],
-      openc: [],
-      prods: [],
+      complaints:[],
+      openc:[],
+      prods:[]
     };
-    this.componentDidMount = this.componentDidMount.bind(this);
-    console.log("constructor");
+    this.componentDidMount=this.componentDidMount.bind(this);
+    console.log("constructor")
+    
   }
 
   componentDidMount() {
-    console.log("didMount");
+    console.log("didMount")
     AdminService.getAdmin(this.state.id).then((res) => {
       let admin = res.data;
       sessionStorage.setItem("phone", admin.contactNumber);
@@ -37,166 +37,139 @@ class HomePageAdmin extends Component {
       sessionStorage.setItem("email", admin.emailId);
     });
     AdminService.getComplaints().then((res) => {
-      this.setState({ complaints: res.data });
+      this.setState({complaints:res.data});
     });
     AdminService.getOpenComplaints().then((res) => {
-      this.setState({ openc: res.data });
+      this.setState({openc:res.data});
     });
     AdminService.getProducts().then((res) => {
-      this.setState({ prods: res.data });
+      this.setState({prods:res.data});
     });
   }
-  buttonHandler(complaintId) {
-    AdminService.changeEngineer(complaintId).then((res) => {
+  buttonHandler(complaintId){
+    AdminService.changeEngineer(complaintId).then((res) =>{
       alert("Engineer replaced Successfully");
-    });
+    })
+    window.location.reload(false)
   }
 
   logout = (e) => {
     this.props.history.push("/login");
   };
 
-  render() {  
+  render() {
     return (
-      <div style={divStyle}>
+      
+      <div style={divStyle}> 
         <Navigation />
-        <div className="row pt-3">
-          <div className="col-4 ml-2">
-            <CardDeck>
-              <Card>
+        <div className="card text-center" style={{opacity: 0.9, fontWeight: "bold", fontSize: 30, backgroundColor:'black', color:'white'}}><span><img src="/abc.png" height="30" width="60"/> &nbsp;Electronics Complaints Statistics</span></div>
+          <Form.Row className="d-flex bd-highlight example-parent mt-4">
+            <CardDeck className="mx-auto">
+               
+              <Card style={cardStyle} border="danger" className="p-2 flex-fill bd-highlight col-example">
                 <Card.Body>
                   <Card.Title className="text-center">
-                    Total Complaints
-                    <p className="mt-2" style={{ fontSize: 65, color: "red" }}>
-                      {this.state.complaints.length}
-                    </p>
+                  <p  style={{fontSize:25,  fontWeight: 'bold', paddingLeft: '23px', paddingRight:'23px'}}>Total Complaints</p><p style={{  fontSize:50, color: 'red'}}>{this.state.complaints.length}</p>
                   </Card.Title>
                 </Card.Body>
               </Card>
-              <Card>
+               
+              <Card style={cardStyle} border="warning" className="p-2 flex-fill bd-highlight col-example">
                 <Card.Body>
                   <Card.Title className="text-center">
-                    Open Complaints
-                    <p
-                      className="mt-2"
-                      style={{ fontSize: 65, color: "yellow" }}
-                    >
-                      {this.state.openc.length}
-                    </p>
+                  <p  style={{fontSize:25,  fontWeight: 'bold', paddingLeft: '23px', paddingRight:'23px'}}>Open Complaints</p><p style={{  fontSize:50, color: '#edd900'}}>{this.state.openc.length}</p>
                   </Card.Title>
                 </Card.Body>
               </Card>
-            </CardDeck>
-            <br />
-            <CardDeck>
-              <Card>
+               
+              <Card style={cardStyle} border="success" className="p-2 flex-fill bd-highlight col-example">
                 <Card.Body>
                   <Card.Title className="text-center">
-                    Closed Complaints
-                    <p
-                      className="mt-2"
-                      style={{ fontSize: 65, color: "green" }}
-                    >
-                      {this.state.complaints.length - this.state.openc.length}
-                    </p>
-                  </Card.Title>
+                  <p  style={{fontSize:25,  fontWeight: 'bold', paddingLeft: '23px', paddingRight:'23px'}}>Closed Complaints</p><p style={{  fontSize:50, color: 'green'}}>{this.state.complaints.length-this.state.openc.length}</p>
+                    </Card.Title>
                 </Card.Body>
               </Card>
-              <Card>
+               
+              <Card style={cardStyle} border="primary" className="p-2 flex-fill bd-highlight col-example">
                 <Card.Body>
                   <Card.Title className="text-center">
-                    Total <br />
-                    Products{" "}
-                    <p className="mt-2" style={{ fontSize: 65, color: "blue" }}>
-                      {this.state.prods.length}
-                    </p>
+                  <p  style={{fontSize:25,  fontWeight: 'bold', paddingLeft: '28px', paddingRight:'28px'}}>Total Products</p><p style={{  fontSize:50, color: 'blue'}}>{this.state.prods.length}</p>
                   </Card.Title>
                 </Card.Body>
               </Card>
             </CardDeck>
-          </div>
-          <div className="col mx-3">
-            <CardDeck>
-              <a href="/addEngineer">
-                <button className="btn btn-info">
-                  <Card style={{ fontSize: 25 }} className="bg-info border-0">
-                    <Card.Body>Add Engineer</Card.Body>
-                  </Card>
-                </button>
-              </a>
-              <Card>
-                <Card.Body>
-                  <Card.Title>Card title</Card.Title>
-                  <Card.Text>Card Text Here</Card.Text>
-                </Card.Body>
-              </Card>
+          </Form.Row>
+          <div className="card text-center mt-5" style={{opacity: 0.9, fontWeight: "bold", fontSize: 30, backgroundColor:'black', color:'white'}}>Admin Operations</div>
+          <Form.Row>
+            <CardDeck className=" pt-2 mx-auto">
+              <div className="d-flex bd-highlight example-parent mt-4 ">
+              <a className="btn btn-info mx-5 " href="/manage-engineers"> <Card className="bg-info px-auto border-0">
+              <Card.Title style={{fontSize:20, color: ' white', fontWeight: 'bold'}}>
+              Manage Engineers</Card.Title>
+              </Card></a>
+              <a className="btn btn-info mx-5 " href="/manage-products"> <Card className="bg-info px-auto  border-0">
+              <Card.Title style={{fontSize:20, color: ' white', fontWeight: 'bold'}}>
+              Manage Products</Card.Title>
+              </Card></a>
+              <a className="btn btn-info mx-5 " href="/manage-complaints"> <Card className="bg-info px-auto  border-0">
+              <Card.Title style={{fontSize:20, color: ' white', fontWeight: 'bold'}}>
+              Manage Complaints</Card.Title>
+              </Card></a>
+              </div>
+            </CardDeck>
+          </Form.Row>
 
-              <Card>
-                <Card.Body>
-                  <Card.Title>Total Complaints</Card.Title>
-                  <Card.Text>Card Text</Card.Text>
-                </Card.Body>
-              </Card>
-              <Card>
-                <Card.Body>
-                  <Card.Title> Total Products </Card.Title>
-                  <Card.Text></Card.Text>
-                </Card.Body>
-              </Card>
-            </CardDeck>
+          <div style={{ opacity: 0.9, fontWeight: "bold", fontSize: 30, backgroundColor:'black', color:'white'}} className="card mt-5 mb-2 text-center">
+            Complaints Registered
           </div>
-        </div>
-        <div className="row mx-2 mt-3">
-          <div className="container-fluid bg-dark my-3">
-            <h2 className="text-white text-center">Complaints Registered</h2>
-          </div>
-          <table className="table table-hover table-dark table-bordered">
-            <thead>
-              <tr>
-                <th>complaint_id</th>
-                <th>Complaintname</th>
-                <th>Status</th>
-                <th>Engineerid</th>
-                <th>Clientid</th>
-                <th>Model number</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.complaints.map((c) => (
-                <tr key={c.complaintId}>
-                  <td> {c.complaintId} </td>
-                  <td> {c.complaintName}</td>
-                  <td> {c.status} </td>
-                  <td> {c.engineerId}</td>
-                  <td> {c.clientId}</td>
-                  <td> {c.modelNumber}</td>
-                  <td>
-                    {c.status === "Open" ? (
-                      <button
-                        className="btn btn-danger px-3"
-                        onClick={() => this.buttonHandler(c.complaintId)}
-                        type="submit"
-                      >
-                        {" "}
-                        &nbsp;Replace Engineer{" "}
-                      </button>
-                    ) : (
-                      <button
-                        className="btn btn-outline-secondary"
-                        onClick={() => this.buttonHandler(c.complaintId)}
-                        type="submit"
-                        disabled
-                      >
-                        Complaint Closed
-                      </button>
-                    )}
-                  </td>
+          <div className="container-fluid">
+          <table className="table table-hover table-secondary table-bordered ml-2 mr-5">
+              <thead>
+                <tr>
+                  <th>complaint_id</th>
+                  <th>Complaintname</th>
+                  <th>Status</th>
+                  <th>Engineerid</th>
+                  <th>Clientid</th>
+                  <th>Model number</th>
+                  <th>Change Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {this.state.complaints.map((c) => (
+                  <tr key={c.complaintId}>
+                    <td> {c.complaintId} </td>
+                    <td> {c.complaintName}</td>
+                    <td> {c.status} </td>
+                    <td> {c.engineerId}</td>
+                    <td> {c.clientId}</td>
+                    <td> {c.modelNumber}</td>
+                    <td>
+                      {c.status === "Open" ? (
+                        <button
+                          className="btn btn-primary px-3"
+                          onClick={() => this.buttonHandler(c.complaintId)}
+                          type="submit"
+                        >
+                          {" "}
+                          &nbsp;Replace Engineer{" "}
+                        </button>
+                      ) : (
+                        <button
+                          className="btn btn-outline-secondary"
+                          onClick={() => this.buttonHandler(c.complaintId)}
+                          type="submit"
+                          disabled
+                        >
+                          Complaint Closed
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
       </div>
     );
   }

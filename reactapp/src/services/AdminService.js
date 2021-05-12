@@ -6,15 +6,10 @@ class AdminService {
     getComplaintsByProduct(product_category){
         return axios.get(BASE_URL+"getComplaintsByProducts/"+product_category);
     }
-
-    addEngineer(engineer){
-        return axios.post(BASE_URL+"addEngineer/",engineer)
+    
+    getAdmin(adminId){
+        return axios.get(BASE_URL+"viewAdmin/"+adminId);
     }
-
-    getAdmin(id){
-        return axios.get(BASE_URL+"viewAdmin"+id);
-    }
-
     getComplaints(){
         return axios.get(BASE_URL+"getAllComplaints")
     }
@@ -23,6 +18,18 @@ class AdminService {
     }
     getProducts(){
         return axios.get(BASE_URL+"getAllProducts")
+    }
+    changeEngineer(complaintId){
+        return axios.put(BASE_URL+"replaceEngineerFromComplaint/"+complaintId)
+    }
+    getEngineerByDomain(domain){
+        return axios.get(BASE_URL+"getEngineerByDomain/"+domain)
+    }
+    changeEngineerDomain(engineerId,newDomain){
+        return axios.put(BASE_URL+"changeDomain/"+engineerId+"/"+newDomain)
+    }
+    addEngineer(engineer){
+        return axios.post(BASE_URL+"addEngineer",engineer)
     }
 }
 

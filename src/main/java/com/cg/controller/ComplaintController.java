@@ -42,9 +42,9 @@ public class ComplaintController {
 	  }
 	  
 	  @PostMapping("bookComplaint")
-	  public boolean bookComplaint(@Valid @RequestBody Complaint cp)throws InvalidEngineerIdException, OutOfWarrantyException, InvalidModelNumberException, InvalidClientIdException {
+	  public String bookComplaint(@Valid @RequestBody Complaint cp)throws InvalidEngineerIdException, OutOfWarrantyException, InvalidModelNumberException, InvalidClientIdException {
 		  
-		  boolean b=cs.bookComplaintService(cp);
+		  String b=cs.bookComplaintService(cp);
 		  return b;
 	  }
 	  @PostMapping("getClientAllComplaints")

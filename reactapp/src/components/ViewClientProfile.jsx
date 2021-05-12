@@ -35,7 +35,7 @@ export class ViewClientProfile extends Component {
                        <ListGroupItem><span className="pr-4">{sessionStorage.getItem('role')} ID:</span>{sessionStorage.getItem('id')}  </ListGroupItem>
                        <ListGroupItem><span className="pr-4">Address:</span>{sessionStorage.getItem('address')}</ListGroupItem>
                        <ListGroupItem><span className="pr-4">Mobile:&nbsp;</span> {sessionStorage.getItem('phone')}</ListGroupItem>
-                       <ListGroupItem><Button href="/client-update" style={alignm}>Update Profile</Button></ListGroupItem>
+                       <ListGroupItem><Button href="/updateclient" style={alignm}>Update Profile</Button></ListGroupItem>
                     </ListGroup>
                 </Card>
             </div>

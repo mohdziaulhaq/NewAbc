@@ -38,20 +38,23 @@ public class ComplaintService implements ComplaintServiceInteface {
 		return cc1;
 	}
 	@Override
-	public boolean bookComplaintService(Complaint cp) throws InvalidClientIdException, InvalidModelNumberException, InvalidEngineerIdException, OutOfWarrantyException {
-
+	public String bookComplaintService(Complaint cp) throws InvalidClientIdException, InvalidModelNumberException, InvalidEngineerIdException, OutOfWarrantyException {
+		String status = "success";
 		Optional<Client> c=cr.findById(cp.getClient().getClientId());
 		if(c.isEmpty()) {
+			status = "Invalid Client Id, Client Not Found";
 			throw new InvalidClientIdException("Invalid Client Id, Client Not Found");
 		}
 		
 		Optional<Product> p=pd.findById(cp.getProduct().getModelNumber());
 		if(p.isEmpty()) { 
+			status = "Invalid Model Number, Product Not Found";
 			throw new InvalidModelNumberException("Invalid Model Number, Product Not Found"); 
 		}
 		Product pp=p.get();
 		Optional<Engineer>e=ed.findAll().stream().filter(f->f.getDomain().equals(pp.getProductCategoryName())).findAny();
 		if(e.isEmpty()) {
+			status = "Currently Engineer Not Available For this category";
 			throw new InvalidEngineerIdException("Currently Engineer Not Available For this category");
 		}
 //		if(pp.getWarrantyDate().compareTo(LocalDate.now())<0) {
@@ -61,7 +64,7 @@ public class ComplaintService implements ComplaintServiceInteface {
 		  cp.setEngineer(e1);
 
 		cd.save(cp);
-		return true;
+		return status;
 	}
 	@Override
 	public List<Complaint> getClientAllComplaintsService(Client e) throws InvalidClientIdException {

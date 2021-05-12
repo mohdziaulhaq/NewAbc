@@ -34,6 +34,7 @@ public class ProductController {
 		String msg=ps.addProductService(product);
 		System.out.println(msg);
 		return msg;
+		//return ps.addProductService(product);
 	}
 	
 	

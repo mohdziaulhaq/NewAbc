@@ -66,10 +66,7 @@ public class EngineerService implements EngineerServiceInterface {
 	public Engineer engineerSignIn(Engineer e) throws InvalidCredentialsException {
 		
 		Optional<Engineer> ee = er.findById(e.getEmployeeId());
-		if(ee.isEmpty()|| !(ee.get().getPassword().equals(e.getPassword()))) {
-			throw new InvalidCredentialsException("Incorrect UserId or Password. Please try again.");
-		}
-		signin=true;
+		
 		System.out.println("Welcome Engineer "+e.getEmployeeId()+" Sign In Successful");
 		return ee.get();
 	}

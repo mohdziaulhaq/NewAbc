@@ -16,7 +16,7 @@ public interface ComplaintServiceInteface {
 
 	public Engineer getEngineer(int i) throws InvalidEngineerIdException;
 
-	public boolean bookComplaintService(Complaint cm) throws InvalidClientIdException, InvalidModelNumberException, InvalidEngineerIdException, OutOfWarrantyException;
+	public String bookComplaintService(Complaint cm) throws InvalidClientIdException, InvalidModelNumberException, InvalidEngineerIdException, OutOfWarrantyException;
 
 	public List<Complaint> getClientAllComplaintsService(Client e) throws InvalidClientIdException;
 
