@@ -20,7 +20,7 @@ public class Product {
 	private String modelNumber;
 	
 	@NotNull(message = "product name cannot be null")
-	@Size(min=2,max=15,message = "please enter correct product name")
+	@Size(min=2,max=30,message = "please enter correct product name")
 	private String productName;
 	
 	@NotNull(message = "product category cannot be null")

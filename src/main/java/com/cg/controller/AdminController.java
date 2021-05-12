@@ -19,6 +19,7 @@ import com.cg.entity.Client;
 import com.cg.entity.Complaint;
 import com.cg.entity.Complaints;
 import com.cg.entity.Engineer;
+import com.cg.entity.Product;
 import com.cg.exception.InvalidComplaintIdException;
 import com.cg.exception.InvalidCredentialsException;
 import com.cg.exception.InvalidDomainException;
@@ -96,15 +97,33 @@ public class AdminController {
 		return cp1;
 	}
 	
-	@PostMapping("adminSignIn")
-	public Admin adminSignIn(@RequestBody Admin a) throws InvalidCredentialsException{
-		Admin aa = as.adminSignIn(a);
-		return aa;
+	@GetMapping("getAllComplaints")
+	public List<Complaints> getAllComplaints() {
+		List<Complaint> list= as.getAllComplaintsService();
+		List<Complaints>cp1=new ArrayList<Complaints>();
+		  for(Complaint b: list) {
+			  cp1.add(new Complaints(b.getComplaintId(),b.getComplaintName(),b.getStatus(),b.getEngineer().getEmployeeId(),b.getClient().getClientId(),b.getProduct().getModelNumber()));
+		  }
+		return cp1;
 	}
 	
-	@PostMapping("adminSignOut")
-	public Admin adminSignOut(@RequestBody Admin e) throws InvalidCredentialsException{
-		Admin aa = as.adminSignOut(e);
-		return aa;
+	@GetMapping("getAllOpenComplaints")
+	public List<Complaints> getAllOpenComplaints() {
+		List<Complaint> list= as.getAllOpenComplaintsService();
+		List<Complaints>cp1=new ArrayList<Complaints>();
+		  for(Complaint b: list) {
+			  cp1.add(new Complaints(b.getComplaintId(),b.getComplaintName(),b.getStatus(),b.getEngineer().getEmployeeId(),b.getClient().getClientId(),b.getProduct().getModelNumber()));
+		  }
+		return cp1;
+	}
+	
+	@GetMapping("getAllProducts")
+	public List<Product> getAllProducts() {
+		return as.getAllProducts();
+	}
+	
+	@GetMapping("getEngineerByDomain/{domain}")
+	public List<Engineer> getEngineerByDomain(@PathVariable("domain") String domain) {
+		return as.getEngineerByDomainService(domain);
 	}
 }

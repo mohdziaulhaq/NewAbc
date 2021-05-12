@@ -10,6 +10,14 @@ class EngineerService {
     getComplaintdate(employee,date){
         return axios.post(BASE_URL+"getResolvedComplaintsByDate/"+ date,employee);
      }
+
+     getResolvedComplaints(engineer){
+         return axios.post(BASE_URL+"getResolvedComplaints/",engineer);
+     }
+
+     getEngineer(engineer){
+         return axios.post(BASE_URL+"engineerSignIn/",engineer);
+     }
 }
 
 export default new EngineerService();

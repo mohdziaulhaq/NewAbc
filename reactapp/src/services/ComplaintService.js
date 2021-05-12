@@ -10,6 +10,8 @@ class ComplaintService {
     getClientComplaints(client){
         return axios.post(BASE_URL+"getClientAllComplaints",client);
     }
+
+    
 }
 
 export default new ComplaintService();

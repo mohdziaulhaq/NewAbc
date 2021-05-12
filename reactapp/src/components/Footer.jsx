@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 //import {Footer} from 'react-bootstrap'
 
 class Footer extends Component {
+=======
+import {Footer} from 'react-bootstrap'
+
+class Footers extends Component {
+>>>>>>> 49f23df08f56e9857fc5fb6b5f28b9aace9199f9
   constructor(props) {
     super(props);
     this.state = {};
@@ -16,4 +22,8 @@ class Footer extends Component {
     );
   }
 }
+<<<<<<< HEAD
 export default Footer;
+=======
+export default Footers;
+>>>>>>> 49f23df08f56e9857fc5fb6b5f28b9aace9199f9

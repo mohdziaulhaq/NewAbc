@@ -33,7 +33,7 @@ public class ProductService implements ProductServiceInterface {
 		}
 		LocalDate dt=product.getDateOfPurchase().plusYears(product.getWarrantyYear());
 		product.setWarrantyDate(dt);
-		pr.save(product);
+		 pr.save(product);
 		return "Product Added Successfully";
 	}
 

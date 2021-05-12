@@ -38,7 +38,7 @@ public class EngineerService implements EngineerServiceInterface {
 	@Override
 	public List<Complaint> getResolvedComplaintsByDateService(Engineer e, LocalDate date) {
 		
-		return cr.findAll().stream().filter(f->f.getEngineer().getEmployeeId()==e.getEmployeeId()&& f.getStatus().equalsIgnoreCase("Closed") && f.getProduct().getDateOfPurchase().equals(date)).collect(Collectors.toList());
+		return cr.findAll().stream().filter(f->f.getEngineer().getEmployeeId()==e.getEmployeeId()&& f.getStatus().equalsIgnoreCase("Open") && f.getProduct().getDateOfPurchase().equals(date)).collect(Collectors.toList());
 	}
 
 	@Override
@@ -66,10 +66,7 @@ public class EngineerService implements EngineerServiceInterface {
 	public Engineer engineerSignIn(Engineer e) throws InvalidCredentialsException {
 		
 		Optional<Engineer> ee = er.findById(e.getEmployeeId());
-		if(ee.isEmpty()|| !(ee.get().getPassword().equals(e.getPassword()))) {
-			throw new InvalidCredentialsException("Incorrect UserId or Password. Please try again.");
-		}
-		signin=true;
+		
 		System.out.println("Welcome Engineer "+e.getEmployeeId()+" Sign In Successful");
 		return ee.get();
 	}

@@ -66,7 +66,7 @@ public class AdminService implements AdminServiceInterface {
 		if(e.isEmpty()) {
 			throw new InvalidEngineerIdException("Invalid Engineer ID, Engineer Not Found");
 		}
-		List<String> domains=Arrays.asList("AC","Fridge","Cooler","Laptop","Fan");
+		List<String> domains=Arrays.asList("AC","Fridge","Cooler","TV","Laptop","FAN","Mobile");
 		if(!domains.contains(newDomain)) {
 			throw new InvalidDomainException("Invalid Domain, Please Give Correct Domain");
 		}
@@ -131,6 +131,29 @@ public class AdminService implements AdminServiceInterface {
 		System.out.println("Thank You Admin"+a.getAdminId()+"  You have successfully logged out");
 		return aa.get();
 	}
+
+	@Override
+	public List<Complaint> getAllComplaintsService() {
+		// TODO Auto-generated method stub
+		return cr.findAll();
+	}
+
+	@Override
+	public List<Complaint> getAllOpenComplaintsService() {
+		return cr.findAll().stream().filter(p->p.getStatus().equals("Open")).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<Product> getAllProducts() {
+		return pr.findAll();
+	}
+
+	@Override
+	public List<Engineer> getEngineerByDomainService(String domain) {
+		return er.findAll().stream().filter(e->e.getDomain().equals(domain)).collect(Collectors.toList());
+		
+	}
 	
 
+	
 }
