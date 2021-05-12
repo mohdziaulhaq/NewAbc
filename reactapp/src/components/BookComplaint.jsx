@@ -1,29 +1,30 @@
 import React, { Component } from 'react'
 import ComplaintService from '../services/ComplaintService.js'
 import ProductService from '../services/ProductService.js';
-//import Navigation from './Navigation.jsx';
+import Navigation from './Navigation.jsx';
 
 
 const divStyle = {
-  height: '100vh',
-  backgroundImage: "url(/bg2.jpg)",
-  backgroundSize: 'cover',
-  float: 'right'
+  width: '100%',
+  height: "100vh",
+  backgroundImage: "url(/bg4.jpg)",
+  backgroundSize: "cover",
+  backgroundRepeat: 'no-repeat'
 };
-
 
 class BookComplaint extends Component {
     constructor(props) {
         super(props)
     
         this.state = {
-                 products:[],
-                 complaintName:'',
-                 status:'Open',
-                 client:{clientId:this.props.match.params.id},
-                 product:{modelNumber:''},
-                 productName:''
-             }
+          apires:"",
+          products: [],
+          complaintName: "",
+          status: "Open",
+          client: { clientId: sessionStorage.getItem('id') },
+          product: { modelNumber: "" },
+          productName: "",
+        };
              this.modelNumberHandler=this.modelNumberHandler.bind(this)
              this.complaintNameHandler=this.complaintNameHandler.bind(this)
              this.bookComplaint=this.bookComplaint.bind(this)
@@ -71,76 +72,125 @@ class BookComplaint extends Component {
       };
       console.log(JSON.stringify(complaint));
       ComplaintService.bookComplaints(complaint).then((res) => {
-        alert('Complaint Registered successfully');
+        this.setState({ apires: res.data });
+        if(this.state.apires==='success'){
+          alert('Complaint Registered successfully');
         console.log(res);
-        this.props.history.push(`/homepage-client/${this.state.client.clientId}`);
+        this.props.history.push("/changestatus-client");
+        }
+        else{
+          alert(this.state.apires);
+        }
       });
     };
 
     render() {
         return (
-          <div className="container-fluid"  style={divStyle}>
-           
-            <p className="pt-3"></p>
-            <div className="card col-md-6 offset-md-3 offset-md-3 pt-3 alert-primary" border="warning">
-              <h1 className="card-title text-center "><b>Book Complaint</b></h1>
-              <form onSubmit={this.bookComplaint} className="form-group">
-                    <div className=" row g-2 pt-5 pl-5 ml-4">
-                     <div className="col-5">
-                        <label htmlFor="prod_cat" className="form-label text-start">Product Category       
-                        </label>
-                      </div>
-                      <div className="col-6">
-                        <select   className="form-select  mb-3" id="prod_cat" aria-label=".form-select-lg example" onChange={this.productCategoryHandler}>
-                            <option value='' selected>  &nbsp;&nbsp;Select Product Category;&nbsp;&nbsp;  </option>
-                            <option value="AC">AC</option>
-                            <option value="Cooler">Cooler</option>
-                            <option value="Fridge">Fridge</option>
-                            <option value="Laptop">Laptop</option>
-                            <option value="Mobile">Mobile</option>
-                            <option value="TV">TV</option>
-                        </select>
-                      </div>
-                    </div>
+          <div  style={divStyle}>
+        <Navigation/>
+        <p className="pt-3"></p>
+        <br/>
+        <div
+          className="card col-md-6 mx-auto  mt-5 text-white"
+          border="warning"
+          style={{ opacity: 0.7, fontWeight: "bold", fontSize: 18, backgroundColor:'black'}}
+        >
+          <h1 className="card-title text-center text-info">
+            <b>Book Complaint</b>
+          </h1>
 
-                    <div className="row g-2 form-group pt-4 pl-5 ml-4">
-                        <div className="col-5">
-                          <label htmlFor="ProdName" className="form-label text-start">Product Name     
-                          </label>
-                        </div>
-                        <div className="col-6">
-                          
-                          <select   className="form-select  mb-3" id="prodName" aria-label=".form-select-lg example" onChange={this.productNameHandler} required>
-                            <option selected>  &nbsp;&nbsp;&nbsp;&nbsp;Select Product Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </option>
-                            {this.state.products.map((prod) => (
-                            <option value={prod.modelNumber}>{prod.productName}</option> 
-                            ))}          
-                          </select>
-                        </div>
-                    </div>
-
-                    <div className="row g-2 form-group pt-3 pl-5 ml-4">
-                        <div className="col-5">
-                          <label htmlFor="ProdIssue" className="form-label text-end">Problem Description     
-                          </label>
-                        </div>
-                        <div className="col-5">
-                          <input id="ProdIssue" type="text" placeholder="ex: Cooler Fan Not Working" name="Issue" className="form-control" value={this.state.complaintName} onChange={this.complaintNameHandler}  required />
-                        </div>
-                    </div>
-                    <div className="row g-2 form-group pt-4 pl-5 ml-4">
-                      <div className="col-3"></div>    
-                      <div className="col-4">  
-                      <button className="btn btn-outline-success " type="submit">
-                        Book Complaint
-                      </button>
-                      </div>
-                    </div> 
-                </form>
-                
+            <form
+              onSubmit={this.bookComplaint}>
+              <div className="form-group pt-3">
+              <div className="row py-1 justify-content-center">
+                <div className="col-4">
+                  <label htmlFor="prod_cat" className="form-label text-start">
+                    Product Category
+                  </label>
+                </div>
+                <div className="col-6">
+                  <select
+                     placeholder="Select Product Category"
+                     name="prod_cat"
+                     className="form-control"
+                     title="Enter Product Category"
+                    onChange={this.productCategoryHandler}
+                    required
+                  >
+                    <option selected>
+                      {" "}
+                      &nbsp;&nbsp;Select Product Category;&nbsp;&nbsp;{" "}
+                    </option>
+                    <option value="AC">AC</option>
+                    <option value="Cooler">Cooler</option>
+                    <option value="Fridge">Fridge</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="TV">TV</option>
+                  </select>
+                </div>
               </div>
-                
+
+              <div className="row py-1 my-3 g-2 justify-content-center">
+                <div className="col-4">
+                  <label htmlFor="ProdName" className="form-label text-start">
+                    Product Name
+                  </label>
+                </div>
+                <div className="col-6">
+                  <select
+                    placeholder="Select Product Category"
+                    name="product category"
+                    className="form-control"
+                    title="Enter Product Category"
+                    onChange={this.productNameHandler}
+                    required
+                  >
+                    <option selected>
+                      {" "}
+                      &nbsp;&nbsp;&nbsp;&nbsp;Select Product
+                      Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                    </option>
+                    {this.state.products.map((prod) => (
+                      <option value={prod.modelNumber}>
+                        {prod.productName}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="row py-1 my-3 g-2 justify-content-center">
+                <div className="col-4">
+                  <label htmlFor="ProdIssue" className="form-label text-end">
+                    Problem Description
+                  </label>
+                </div>
+                <div className="col-6">
+                  <input
+                    id="ProdIssue"
+                    type="text"
+                    placeholder="ex: Cooler Fan Not Working"
+                    name="Issue"
+                    className="form-control"
+                    value={this.state.complaintName}
+                    onChange={this.complaintNameHandler}
+                    required
+                  />
+                </div>
+              </div>
+              </div>
+            <div className="row pb-3 pt-3 justify-content-center">
+              <div className="col-10">
+              <button className="btn btn-info btn-block " type="submit">
+                Book Complaint
+              </button>
+              </div>
             </div>
+              
+          </form>
+        </div>
+        </div>
             
 
         )

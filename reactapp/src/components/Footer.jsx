@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import {Footer} from 'react-bootstrap'
 
-class Footer extends Component {
+class Footers extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -8,17 +9,11 @@ class Footer extends Component {
 
   render() {
     return (
-      <div>
-        <p style={{ paddingBottom: '70px' }}></p>
-        <footer style={{ backgroundColor: 'black' ,overflow: 'auto', }} className="footer fixed-bottom ">
-          <div className="col py-2">
-            <center>
-              <span className="text-light">Copyright © 2021 ABC Electronics. All rights reserved.</span>
-            </center>
-          </div>
+        <footer style={{ backgroundColor: 'black' }} className="footer fixed-bottom">
+
+              <p className="text-center text-light">Copyright © 2021 ABC Electronics. All rights reserved.</p>
         </footer>
-      </div>
     );
   }
 }
-export default Footer;
+export default Footers;

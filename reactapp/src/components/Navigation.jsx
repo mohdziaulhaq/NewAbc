@@ -29,7 +29,6 @@ export class Navigation extends Component {
                            <Nav.Link href="/homepage-engineer">Home</Nav.Link>
                            <Nav.Link href="https://www.covid19india.org/">COVID 19 Updates</Nav.Link>
                            <Nav.Link href="/engineer-profile">My Profile</Nav.Link>
-                           <Nav.Link href="/viewcomplaints">My Complaints</Nav.Link>
                         </Nav>
                         <Form inline>
                           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -48,7 +47,7 @@ export class Navigation extends Component {
                                <Nav.Link href="/homepage-client">Home</Nav.Link>
                                <Nav.Link href="https://www.covid19india.org/">COVID 19 Updates</Nav.Link>
                                <Nav.Link href="/client-profile">My Profile</Nav.Link>
-                               <Nav.Link href="/change-status">My Complaints</Nav.Link>
+                               <Nav.Link href="/changestatus-client">My Complaints</Nav.Link>
                             </Nav>
                             <Form inline>
                               <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -66,7 +65,6 @@ export class Navigation extends Component {
                                <Nav.Link href="/homepage-admin">Home</Nav.Link>
                                <Nav.Link href="https://www.covid19india.org/">COVID 19 Updates</Nav.Link>
                                <Nav.Link href="/admin-profile">My Profile</Nav.Link>
-                               <Nav.Link href="/change-status">View All Complaints</Nav.Link>
                             </Nav>
                             <Form inline>
                               <FormControl type="text" placeholder="Search" className="mr-sm-2" />

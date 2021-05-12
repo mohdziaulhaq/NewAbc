@@ -35,7 +35,7 @@ export class ViewAdminProfile extends Component {
                        <ListGroupItem><span className="pr-4">{sessionStorage.getItem('role')} ID:</span>{sessionStorage.getItem('id')}  </ListGroupItem>
                        <ListGroupItem><span className="pr-4">Email ID:</span>{sessionStorage.getItem('email')}</ListGroupItem>
                        <ListGroupItem><span className="pr-4">Mobile :</span>{sessionStorage.getItem('phone')}</ListGroupItem>
-                       <ListGroupItem><Button style={alignm}>Update Profile</Button></ListGroupItem>
+                       
                     </ListGroup>
                 </Card>
             </div>

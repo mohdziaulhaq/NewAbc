@@ -66,7 +66,7 @@ public class AdminService implements AdminServiceInterface {
 		if(e.isEmpty()) {
 			throw new InvalidEngineerIdException("Invalid Engineer ID, Engineer Not Found");
 		}
-		List<String> domains=Arrays.asList("AC","Fridge","Cooler","Laptop","Fan");
+		List<String> domains=Arrays.asList("AC","Fridge","Cooler","TV","Laptop","FAN","Mobile");
 		if(!domains.contains(newDomain)) {
 			throw new InvalidDomainException("Invalid Domain, Please Give Correct Domain");
 		}
