@@ -24,6 +24,7 @@ function App() {
   return (
     <BrowserRouter>
     <div>
+      <Header/>
       <Switch>
         <Route path="/" exact component={LoginPage}></Route>
         <Route path="/login" exact component={LoginPage}></Route>
@@ -50,7 +51,7 @@ function App() {
         <Route component={NotFound} />
       </Switch>
       </div>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }
