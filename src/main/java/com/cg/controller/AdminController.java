@@ -35,9 +35,7 @@ public class AdminController {
 	
 	@Autowired
 	public EngineerServiceInterface is;
-	
-	
-	
+
 	
 	@GetMapping("/viewAdmin/{id}")
 	public Admin viewAdmin(@PathVariable("id") int id) {

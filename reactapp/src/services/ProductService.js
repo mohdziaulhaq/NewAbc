@@ -10,6 +10,10 @@ class ProductService {
     getProduct(category){
         return axios.get(BASE_URL+"getProduct/"+category);
     }
+
+    updateWarrantyDate(modelNumber){
+        return axios.put(BASE_URL+"updateProductWarranty/"+modelNumber);
+    }
 }
 
 export default new ProductService();

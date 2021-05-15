@@ -36,7 +36,9 @@ class ViewProductByCategory extends Component {
 
   updateButtonHandler(modelNumber){
       ProductService.updateWarrantyDate(modelNumber)
-          alert('Product Warrenty Extended For One Year')
+        alert('Product Warrenty Extended For One Year');
+        window.location.reload(false)
+          
   }
   render() {
     return (

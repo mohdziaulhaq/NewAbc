@@ -3,6 +3,12 @@ import React, { Component } from "react";
 // import "react-datepicker/dist/react-datepicker.css";
 import EngineerService from "../services/EngineerService.js";
 import Navigation from "./Navigation.jsx";
+const divStyle = {
+  height: '100vh',
+  backgroundImage: "url(/bg3.jpg)",
+  backgroundSize: 'cover',
+  //float: 'right'
+};
 class GetComplaintsByDate extends Component {
   constructor(props) {
     super(props);
@@ -34,10 +40,10 @@ class GetComplaintsByDate extends Component {
 
   render() {
     return (
-      <>
+      <div style={divStyle}>
       <Navigation/>
       <div className="container">
-        <h2 className="text-center">Get Complaints By Date</h2>
+        <h2 className="text-center mt-4 text-dark" style={{fontFamily:'Georgia, serif', fontWeight: 'bold'}}>Get Complaints By Date</h2>
         <center>
           <form onSubmit={this.getComplaints}>
             <div className="col-3">
@@ -85,7 +91,7 @@ class GetComplaintsByDate extends Component {
           </table>
         </div>
       </div>
-      </>
+      </div>
     );
   }
 }
