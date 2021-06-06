@@ -1,8 +1,16 @@
 import React from 'react';
-
+const divStyle = {
+    width: "100%",
+    height: "100vh",
+    backgroundImage: "url(/not.png)",
+    backgroundColor: "#6cb5e0",
+    backgroundRepeat  : 'no-repeat',
+    backgroundSize: "1370px",
+ 
+  };
 const NotFound = () => (
-    <div className="text-danger text-center">
-       <h2> 404!</h2><br></br><h3> Page not found</h3>
+    <div style={divStyle}>
+       
     </div>
 );
 
